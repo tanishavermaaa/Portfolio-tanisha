@@ -1,0 +1,46 @@
+import { Github, Linkedin, Mail } from "lucide-react";
+
+const Footer = () => {
+  return (
+    <footer className="relative pt-10 pb-10 border-t border-foreground/5">
+      <div className="container">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="text-center md:text-left">
+            <p className="font-display text-lg">
+              <span className="text-gradient">Tanisha</span>
+              <span className="text-foreground/80"> Verma</span>
+            </p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Designed and built with creativity, code, and curiosity.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {[
+              { icon: Github, href: "https://github.com/tanishavermaaa", label: "GitHub" },
+              { icon: Linkedin, href: "https://www.linkedin.com/", label: "LinkedIn" },
+              { icon: Mail, href: "mailto:tanisha@example.com", label: "Email" },
+            ].map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="w-10 h-10 rounded-full glass flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all duration-500 ease-smooth hover:-translate-y-0.5"
+              >
+                <Icon size={16} />
+              </a>
+            ))}
+          </div>
+
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Tanisha Verma
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
