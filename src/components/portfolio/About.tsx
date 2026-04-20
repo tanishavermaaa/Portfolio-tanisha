@@ -66,6 +66,7 @@ const About = () => {
               {paragraphs.map((p, i) => (
                 <motion.p
                   key={i}
+                  className="text-justify"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
