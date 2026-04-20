@@ -19,7 +19,7 @@ const Footer = () => {
             {[
               { icon: Github, href: "https://github.com/tanishavermaaa", label: "GitHub" },
               { icon: Linkedin, href: "https://www.linkedin.com/in/tanisha-verma-98657025a/", label: "LinkedIn" },
-              { icon: MessageCircle, href: "https://wa.me/917905468326", label: "WhatsApp" },
+              { icon: MessageCircle, href: "mailto:tanishavermaa4@gmail.com?subject=Lets%20work%20together", label: "Email" },
             ].map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
