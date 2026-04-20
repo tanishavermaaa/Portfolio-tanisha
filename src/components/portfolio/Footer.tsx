@@ -27,7 +27,7 @@ const Footer = () => {
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="w-10 h-10 rounded-full glass flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all duration-500 ease-smooth hover:-translate-y-0.5"
+                className="relative z-10 cursor-pointer w-10 h-10 rounded-full glass flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all duration-500 ease-smooth hover:-translate-y-0.5"
               >
                 <Icon size={16} />
               </a>

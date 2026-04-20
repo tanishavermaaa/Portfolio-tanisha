@@ -15,7 +15,7 @@ const Contact = () => {
         <div className="absolute right-0 bottom-0 w-[400px] h-[400px] rounded-full bg-accent/15 blur-[120px]" />
       </div>
 
-      <div className="container">
+      <div className="container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -57,7 +57,7 @@ const Contact = () => {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
             href="mailto:tanishavermaa4@gmail.com?subject=Lets%20work%20together"
-            className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-primary text-primary-foreground font-medium shadow-elegant hover:shadow-glow-primary transition-all duration-500 ease-smooth hover:-translate-y-0.5 mb-16"
+            className="group relative z-10 cursor-pointer inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-primary text-primary-foreground font-medium shadow-elegant hover:shadow-glow-primary transition-all duration-500 ease-smooth hover:-translate-y-0.5 mb-16"
           >
             Get In Touch
             <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -76,7 +76,7 @@ const Contact = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.7, delay: 0.3 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  className="group glass-strong rounded-2xl p-5 flex items-center gap-4 text-left transition-all duration-500 ease-smooth hover:-translate-y-1 hover:border-primary/30 hover:shadow-glow-primary"
+                  className="group relative z-10 cursor-pointer glass-strong rounded-2xl p-5 flex items-center gap-4 text-left transition-all duration-500 ease-smooth hover:-translate-y-1 hover:border-primary/30 hover:shadow-glow-primary"
                 >
                   <div className="w-11 h-11 rounded-xl bg-gradient-glass flex items-center justify-center shrink-0">
                     <Icon size={18} className="text-primary-glow" />
