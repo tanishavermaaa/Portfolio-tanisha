@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, ArrowUpRight } from "lucide-react";
 
 const links = [
-  { label: "Email", value: "tanishavermaa4@gmail.com", href: "mailto:tanishavermaa4@gmail.com", icon: Mail },
+  { label: "Email", value: "tanishavermaa4@gmail.com", href: "mailto:tanishavermaa4@gmail.com?subject=Lets%20work%20together", icon: Mail },
   { label: "LinkedIn", value: "in/tanisha-verma", href: "https://www.linkedin.com/in/tanisha-verma-98657025a/", icon: Linkedin },
   { label: "GitHub", value: "@tanishavermaaa", href: "https://github.com/tanishavermaaa", icon: Github },
 ];
@@ -56,7 +56,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            href="mailto:tanishavermaa4@gmail.com"
+            href="mailto:tanishavermaa4@gmail.com?subject=Lets%20work%20together"
             className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-primary text-primary-foreground font-medium shadow-elegant hover:shadow-glow-primary transition-all duration-500 ease-smooth hover:-translate-y-0.5 mb-16"
           >
             Get In Touch
