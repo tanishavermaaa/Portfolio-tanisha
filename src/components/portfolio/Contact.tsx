@@ -48,7 +48,7 @@ const Contact = () => {
           >
             I am always excited to connect, collaborate, and explore opportunities where I can contribute,
             learn, and create meaningful digital experiences. Whether it is a project, internship, freelance
-            opportunity, or just a conversation about tech and design — I'd love to hear from you.
+            opportunity, or just a conversation about tech and design - I'd love to hear from you.
           </motion.p>
 
           <motion.a

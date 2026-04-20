@@ -11,7 +11,7 @@ const projects = [
     tag: "Full-Stack · MERN",
     image: tracker,
     description:
-      "A smart and structured job tracking platform built to simplify the job search process — secure auth, CRUD, filtering, and an organized dashboard experience.",
+      "A smart and structured job tracking platform built to simplify the job search process - secure auth, CRUD, filtering, and an organized dashboard experience.",
     extended:
       "Built with the MERN stack to solve a real-world problem faced by students and job seekers managing applications across companies and roles. The system offers a clean workflow for adding, updating, sorting and managing entries.",
     highlights: [
@@ -30,7 +30,7 @@ const projects = [
     description:
       "An interactive quiz-based web application designed to make learning and participation more engaging through a dynamic and enjoyable interface.",
     extended:
-      "Built to create a fun, responsive quiz experience where users can answer questions, track progress and receive instant feedback — focused on engagement, interactivity and a polished product feel.",
+      "Built to create a fun, responsive quiz experience where users can answer questions, track progress and receive instant feedback , focused on engagement, interactivity and a polished product feel.",
     highlights: [
       "Interactive question flow",
       "Dynamic score tracking",
@@ -47,7 +47,7 @@ const projects = [
     description:
       "A backend-focused project to manage restaurant operations using RESTful APIs, authentication and database integration.",
     extended:
-      "Highlights backend fundamentals through secure API creation, structured data handling and scalable architecture — covering route handling, server-side logic and database design.",
+      "Highlights backend fundamentals through secure API creation, structured data handling and scalable architecture , covering route handling, server-side logic and database design.",
     highlights: [
       "RESTful API design",
       "Authentication & secure access",

@@ -117,7 +117,7 @@ const Hero = () => {
             className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed"
           >
             A developer who blends logic with creativity to build digital products that are functional,
-            polished, and meaningful — work that solves real problems and leaves a strong impression.
+            polished, and meaningful - work that solves real problems and leaves a strong impression.
           </motion.p>
         </div>
       </div>

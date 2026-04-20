@@ -9,7 +9,7 @@ const experiences = [
     description:
       "Gained real-world industry exposure by working in a professional environment, learning development workflows, strengthening technical understanding, and adapting to the discipline of software delivery in a large-scale organization.",
     extended:
-      "This experience helped me understand how software development works beyond classroom projects — practical learning, structured problem-solving, teamwork, and writing clean, reliable, maintainable code in a professional setting.",
+      "This experience helped me understand how software development works beyond classroom projects - practical learning, structured problem-solving, teamwork, and writing clean, reliable, maintainable code in a professional setting.",
     highlights: [
       "Real-world development exposure",
       "Professional workflow understanding",
@@ -25,7 +25,7 @@ const experiences = [
     description:
       "Worked on freelance web projects focused on building responsive, customized, and visually appealing digital solutions for clients.",
     extended:
-      "Through freelancing, I learned to handle projects from idea to execution — understanding requirements, creating tailored designs, building functional websites and delivering solutions that balance usability with visual appeal.",
+      "Through freelancing, I learned to handle projects from idea to execution, understanding requirements, creating tailored designs, building functional websites and delivering solutions that balance usability with visual appeal.",
     highlights: [
       "Responsive website development",
       "Custom client-focused solutions",
