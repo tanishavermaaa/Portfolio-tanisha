@@ -101,12 +101,14 @@ const Hero = () => {
               View My Work
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
-            <button
-              onClick={() => scrollTo("#contact")}
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full glass-strong text-foreground font-medium hover:bg-foreground/5 transition-all duration-500 ease-smooth hover:-translate-y-0.5"
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=tanishavermaa4@gmail.com&su=Lets%20work%20together"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative z-10 cursor-pointer inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full glass-strong text-foreground font-medium hover:bg-foreground/5 transition-all duration-500 ease-smooth hover:-translate-y-0.5"
             >
               Let's Connect
-            </button>
+            </a>
           </motion.div>
 
           <motion.p

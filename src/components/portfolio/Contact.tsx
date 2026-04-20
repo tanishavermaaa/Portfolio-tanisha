@@ -1,13 +1,32 @@
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, ArrowUpRight } from "lucide-react";
+import { Mail, Linkedin, Github, ArrowUpRight, Copy, Check } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
+
+const GMAIL_COMPOSE_URL =
+  "https://mail.google.com/mail/?view=cm&fs=1&to=tanishavermaa4@gmail.com&su=Lets%20work%20together";
+const EMAIL_ADDRESS = "tanishavermaa4@gmail.com";
 
 const links = [
-  { label: "Email", value: "tanishavermaa4@gmail.com", href: "mailto:tanishavermaa4@gmail.com?subject=Lets%20work%20together", icon: Mail },
-  { label: "LinkedIn", value: "in/tanisha-verma", href: "https://www.linkedin.com/in/tanisha-verma-98657025a/", icon: Linkedin },
-  { label: "GitHub", value: "@tanishavermaaa", href: "https://github.com/tanishavermaaa", icon: Github },
+  { label: "Email", value: EMAIL_ADDRESS, href: GMAIL_COMPOSE_URL, icon: Mail, external: true },
+  { label: "LinkedIn", value: "in/tanisha-verma", href: "https://www.linkedin.com/in/tanisha-verma-98657025a/", icon: Linkedin, external: true },
+  { label: "GitHub", value: "@tanishavermaaa", href: "https://github.com/tanishavermaaa", icon: Github, external: true },
 ];
 
 const Contact = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL_ADDRESS);
+      setCopied(true);
+      toast.success("Email copied to clipboard");
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      toast.error("Failed to copy email");
+    }
+  };
+
   return (
     <section id="contact" className="relative py-28 md:py-40 overflow-hidden">
       <div className="absolute inset-0 -z-10">
@@ -56,16 +75,33 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            href="mailto:tanishavermaa4@gmail.com?subject=Lets%20work%20together"
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = "mailto:tanishavermaa4@gmail.com?subject=Lets%20work%20together";
-            }}
-            className="group relative z-10 cursor-pointer inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-primary text-primary-foreground font-medium shadow-elegant hover:shadow-glow-primary transition-all duration-500 ease-smooth hover:-translate-y-0.5 mb-16"
+            href={GMAIL_COMPOSE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative z-10 cursor-pointer inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-primary text-primary-foreground font-medium shadow-elegant hover:shadow-glow-primary transition-all duration-500 ease-smooth hover:-translate-y-0.5 mb-4"
           >
             Get In Touch
             <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </motion.a>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-16"
+          >
+            <span>Email:</span>
+            <span className="text-foreground/90">{EMAIL_ADDRESS}</span>
+            <button
+              type="button"
+              onClick={handleCopy}
+              aria-label="Copy email to clipboard"
+              className="relative z-10 cursor-pointer w-7 h-7 rounded-md glass flex items-center justify-center hover:text-foreground hover:border-primary/30 transition-all duration-300"
+            >
+              {copied ? <Check size={13} className="text-primary-glow" /> : <Copy size={13} />}
+            </button>
+          </motion.div>
 
           <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
             {links.map((l, i) => {
@@ -74,13 +110,7 @@ const Contact = () => {
                 <motion.a
                   key={l.label}
                   href={l.href}
-                  onClick={(e) => {
-                    if (l.href.startsWith("mailto:")) {
-                      e.preventDefault();
-                      window.location.href = l.href;
-                    }
-                  }}
-                  target={l.href.startsWith("http") ? "_blank" : undefined}
+                  target="_blank"
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}

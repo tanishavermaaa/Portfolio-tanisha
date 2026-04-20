@@ -19,18 +19,12 @@ const Footer = () => {
             {[
               { icon: Github, href: "https://github.com/tanishavermaaa", label: "GitHub" },
               { icon: Linkedin, href: "https://www.linkedin.com/in/tanisha-verma-98657025a/", label: "LinkedIn" },
-              { icon: MessageCircle, href: "mailto:tanishavermaa4@gmail.com?subject=Lets%20work%20together", label: "Email" },
+              { icon: MessageCircle, href: "https://mail.google.com/mail/?view=cm&fs=1&to=tanishavermaa4@gmail.com&su=Lets%20work%20together", label: "Email" },
             ].map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
                 href={href}
-                onClick={(e) => {
-                  if (href.startsWith("mailto:")) {
-                    e.preventDefault();
-                    window.location.href = href;
-                  }
-                }}
-                target={href.startsWith("http") ? "_blank" : undefined}
+                target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
                 className="relative z-10 cursor-pointer w-10 h-10 rounded-full glass flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all duration-500 ease-smooth hover:-translate-y-0.5"
