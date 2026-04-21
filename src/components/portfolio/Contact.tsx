@@ -9,7 +9,7 @@ const EMAIL_ADDRESS = "​";
 
 const links = [
   { label: "Email", value: EMAIL_ADDRESS, href: GMAIL_COMPOSE_URL, icon: Mail, external: true },
-  { label: "LinkedIn", value: "in/tanish-verma", href: "https://www.linkedin.com/in/tanisha-verma-98657025a/", icon: Linkedin, external: true },
+  { label: "LinkedIn", value: "in/tanisha-verma", href: "https://www.linkedin.com/in/tanisha-verma-98657025a/", icon: Linkedin, external: true },
   { label: "GitHub", value: "@tanishavermaaa", href: "https://github.com/tanishavermaaa", icon: Github, external: true },
 ];
 
