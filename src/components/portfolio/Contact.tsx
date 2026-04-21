@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, ArrowUpRight, Copy, Check, WifiLow } from "lucide-react";
+import { Mail, Linkedin, Github, ArrowUpRight, Copy, Check } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
 const GMAIL_COMPOSE_URL =
   "https://mail.google.com/mail/?view=cm&fs=1&to=tanishavermaa4@gmail.com&su=Lets%20work%20together";
-const EMAIL_ADDRESS = "​";
+const EMAIL_ADDRESS = "tanishavermaa4@gmail.com";
 
 const links = [
   { label: "Email", value: EMAIL_ADDRESS, href: GMAIL_COMPOSE_URL, icon: Mail, external: true },
@@ -91,7 +91,7 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-16"
           >
-            <span>​</span>
+            <span>Email:</span>
             <span className="text-foreground/90">{EMAIL_ADDRESS}</span>
             <button
               type="button"
@@ -99,7 +99,7 @@ const Contact = () => {
               aria-label="Copy email to clipboard"
               className="relative z-10 cursor-pointer w-7 h-7 rounded-md glass flex items-center justify-center hover:text-foreground hover:border-primary/30 transition-all duration-300"
             >
-              {copied ? <Check size={13} className="text-primary-glow" /> : <WifiLow size={13} />}
+              {copied ? <Check size={13} className="text-primary-glow" /> : <Copy size={13} />}
             </button>
           </motion.div>
 
