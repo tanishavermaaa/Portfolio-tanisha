@@ -44,7 +44,7 @@ const Contact = () => {
 
         <div className="grid md:grid-cols-12 gap-12 items-end mb-24">
           <p className="md:col-span-5 text-lg md:text-xl text-foreground/80 leading-relaxed">
-            I'm open to freelance, internships and collaborations. Reach out — let's make something that lasts longer than a scroll.
+            I'm open to freelance, internships and collaborations. Reach out. Let's make something that lasts longer than a scroll.
           </p>
           <div className="md:col-span-4 md:col-start-9 flex md:justify-end">
             <Magnetic strength={0.4}>

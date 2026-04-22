@@ -79,9 +79,9 @@ const Projects = () => {
       <div className="px-6 md:px-10 pt-32 pb-16">
         <div className="max-w-[1500px] mx-auto">
           <div className="grid md:grid-cols-12 gap-8 mb-12">
-            <p className="eyebrow md:col-span-2 text-background/60">(Selected Work)</p>
+            <p className="eyebrow md:col-span-2 text-background/60">​Projects</p>
             <p className="md:col-span-3 mono text-[11px] uppercase tracking-[0.18em] text-background/60">
-              02 / 2024 — 2025
+              ​
             </p>
           </div>
           <SplitReveal as="h2" className="display text-6xl md:text-8xl lg:text-9xl text-balance">

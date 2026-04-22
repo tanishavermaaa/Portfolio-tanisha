@@ -4,20 +4,20 @@ import SplitReveal from "./SplitReveal";
 const experiences = [
   {
     n: "01",
-    year: "2024",
+    year: "2026",
     role: "Intern",
     title: "Infosys",
     description:
-      "Real-world industry exposure — development workflows, professional discipline, and writing reliable, maintainable code at scale.",
+      "Real-world industry exposure - development workflows, professional discipline, and writing reliable, maintainable code at scale.",
   },
   {
     n: "02",
-    year: "2024 — Now",
+    year: "2025 — Now",
     role: "Freelance Web Developer",
     title: "Snarip Studio",
     link: "https://snaripstudio.com",
     description:
-      "Building responsive, custom websites for clients — from idea to launch, balancing usability with visual polish.",
+      "Building responsive, custom websites for clients - from idea to launch, balancing usability with visual polish.",
   },
 ];
 

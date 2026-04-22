@@ -64,7 +64,7 @@ const Hero = () => {
       {/* Bottom row: tagline + CTA */}
       <div className="grid md:grid-cols-12 gap-8 items-end">
         <div className="hero-meta md:col-span-5">
-          <p className="eyebrow mb-3">— Selected role</p>
+          <p className="eyebrow mb-3">​</p>
           <p className="text-xl md:text-2xl leading-snug text-pretty">
             Final-year IT student blending <em className="italic">logic</em> and <em className="italic">design</em> into living digital products.
           </p>
