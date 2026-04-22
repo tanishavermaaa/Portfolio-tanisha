@@ -1,12 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import heroBg from "@/assets/hero-bg.jpg";
 
-declare global {
-  interface Window {
-    gsap?: any;
-  }
-}
+gsap.registerPlugin(useGSAP);
 
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -16,23 +14,14 @@ const Hero = () => {
   const metaRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
-  const orb1Ref = useRef<HTMLDivElement>(null);
-  const orb2Ref = useRef<HTMLDivElement>(null);
-  const orb3Ref = useRef<HTMLDivElement>(null);
-  const bgRef = useRef<HTMLDivElement>(null);
+  const sceneRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const gsap = window.gsap;
-    if (!gsap || !headlineRef.current) return;
-
-    const ctx = gsap.context(() => {
-      // Split headline into per-word spans for staggered reveal
+  useGSAP(
+    () => {
+      // --- Heading reveal: split into per-word masked spans ---
       const headline = headlineRef.current!;
-      const originalHTML = headline.innerHTML;
       const text = headline.textContent || "";
       const words = text.trim().split(/\s+/);
-
-      // Preserve gradient on "Verma"
       headline.innerHTML = words
         .map((w) => {
           const isGradient = w.toLowerCase().includes("verma");
@@ -43,40 +32,40 @@ const Hero = () => {
 
       const inners = headline.querySelectorAll(".reveal-inner");
 
-      // Set initial states
       gsap.set(inners, { yPercent: 110, opacity: 0 });
       gsap.set(
-        [badgeRef.current, subRef.current, metaRef.current, ctaRef.current, descRef.current],
+        [badgeRef.current, subRef.current, metaRef.current, descRef.current],
         { y: 24, opacity: 0 }
       );
+      const ctaItems = ctaRef.current?.children || [];
+      gsap.set(ctaItems, { y: 24, opacity: 0, scale: 0.96 });
 
       const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-
       tl.to(badgeRef.current, { y: 0, opacity: 1, duration: 1.0 }, 0.1)
+        .to(inners, { yPercent: 0, opacity: 1, duration: 1.2, stagger: 0.08 }, 0.2)
+        .to(subRef.current, { y: 0, opacity: 1, duration: 1.0 }, 0.55)
+        .to(metaRef.current, { y: 0, opacity: 1, duration: 1.0 }, 0.7)
         .to(
-          inners,
-          { yPercent: 0, opacity: 1, duration: 1.2, stagger: 0.08 },
-          0.2
+          ctaItems,
+          { y: 0, opacity: 1, scale: 1, duration: 0.9, stagger: 0.12 },
+          0.85
         )
-        .to(subRef.current, { y: 0, opacity: 1, duration: 1.0 }, 0.5)
-        .to(metaRef.current, { y: 0, opacity: 1, duration: 1.0 }, 0.65)
-        .to(ctaRef.current, { y: 0, opacity: 1, duration: 1.0 }, 0.8)
-        .to(descRef.current, { y: 0, opacity: 1, duration: 1.0 }, 0.95);
+        .to(descRef.current, { y: 0, opacity: 1, duration: 1.0 }, 1.05);
 
-      // Floating loop on orbs (infinite, smooth)
-      const orbs = [orb1Ref.current, orb2Ref.current, orb3Ref.current].filter(Boolean);
-      orbs.forEach((orb, i) => {
-        gsap.to(orb, {
-          y: i % 2 === 0 ? -30 : 30,
-          x: i % 2 === 0 ? 20 : -20,
-          duration: 6 + i * 1.5,
+      // --- Floating loop on every depth layer ---
+      const layers = gsap.utils.toArray<HTMLElement>(".scene-layer");
+      layers.forEach((layer, i) => {
+        gsap.to(layer, {
+          y: i % 2 === 0 ? -28 : 28,
+          x: i % 2 === 0 ? 18 : -18,
+          duration: 6 + i * 1.3,
           repeat: -1,
           yoyo: true,
           ease: "sine.inOut",
         });
       });
 
-      // Subtle glow pulse on headline gradient word
+      // --- Subtle glow pulse on gradient word ---
       const gradientWord = headline.querySelector(".text-gradient");
       if (gradientWord) {
         gsap.to(gradientWord, {
@@ -88,78 +77,106 @@ const Hero = () => {
         });
       }
 
-      // Parallax on mouse move
-      const xTo = orbs.map((orb) =>
-        gsap.quickTo(orb, "x", { duration: 1.2, ease: "power3.out" })
+      // --- Mouse parallax with depth (3D feel) ---
+      const xTos = layers.map((l) =>
+        gsap.quickTo(l, "x", { duration: 1.2, ease: "power3.out" })
       );
-      const yTo = orbs.map((orb) =>
-        gsap.quickTo(orb, "y", { duration: 1.2, ease: "power3.out" })
+      const yTos = layers.map((l) =>
+        gsap.quickTo(l, "y", { duration: 1.2, ease: "power3.out" })
       );
-      const bgX = bgRef.current
-        ? gsap.quickTo(bgRef.current, "x", { duration: 1.4, ease: "power3.out" })
+      const rxTo = sceneRef.current
+        ? gsap.quickTo(sceneRef.current, "rotateX", { duration: 1.4, ease: "power3.out" })
         : null;
-      const bgY = bgRef.current
-        ? gsap.quickTo(bgRef.current, "y", { duration: 1.4, ease: "power3.out" })
+      const ryTo = sceneRef.current
+        ? gsap.quickTo(sceneRef.current, "rotateY", { duration: 1.4, ease: "power3.out" })
         : null;
 
       const onMove = (e: MouseEvent) => {
         const { innerWidth, innerHeight } = window;
         const nx = (e.clientX / innerWidth - 0.5) * 2; // -1..1
         const ny = (e.clientY / innerHeight - 0.5) * 2;
-        orbs.forEach((_, i) => {
-          const depth = 20 + i * 14;
-          xTo[i](nx * depth);
-          yTo[i](ny * depth);
+        layers.forEach((_, i) => {
+          const depth = 14 + i * 12;
+          xTos[i](nx * depth);
+          yTos[i](ny * depth);
         });
-        bgX?.(nx * 12);
-        bgY?.(ny * 12);
+        ryTo?.(nx * 4);
+        rxTo?.(-ny * 4);
       };
 
       window.addEventListener("mousemove", onMove, { passive: true });
-      return () => {
-        window.removeEventListener("mousemove", onMove);
-        headline.innerHTML = originalHTML;
-      };
-    }, heroRef);
-
-    return () => ctx.revert();
-  }, []);
+      return () => window.removeEventListener("mousemove", onMove);
+    },
+    { scope: heroRef }
+  );
 
   return (
     <section
       ref={heroRef}
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16"
+      style={{ perspective: "1200px" }}
     >
-      {/* Background image */}
+      {/* === 3D-feel layered scene === */}
       <div
-        ref={bgRef}
-        className="absolute inset-0 -z-10 opacity-60 will-change-transform"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/60 to-background" />
+        ref={sceneRef}
+        className="absolute inset-0 -z-10"
+        style={{ transformStyle: "preserve-3d", willChange: "transform" }}
+      >
+        {/* Background image (deepest) */}
+        <div
+          className="scene-layer absolute inset-0 opacity-50 will-change-transform"
+          style={{
+            backgroundImage: `url(${heroBg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            transform: "translateZ(-200px) scale(1.15)",
+          }}
+        />
 
-      {/* Aurora */}
-      <div className="aurora -z-10" />
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
 
-      {/* Floating orbs */}
-      <div
-        ref={orb1Ref}
-        className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-primary/20 blur-[120px] -z-10 will-change-transform"
-      />
-      <div
-        ref={orb2Ref}
-        className="absolute top-1/3 -right-40 w-[600px] h-[600px] rounded-full bg-accent/20 blur-[140px] -z-10 will-change-transform"
-      />
-      <div
-        ref={orb3Ref}
-        className="absolute bottom-0 left-1/3 w-[400px] h-[400px] rounded-full bg-primary-glow/15 blur-[100px] -z-10 will-change-transform"
-      />
+        {/* Aurora */}
+        <div className="aurora" />
+
+        {/* Depth layers — blurred shapes at varying Z */}
+        <div
+          className="scene-layer absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-primary/25 blur-[120px] will-change-transform"
+          style={{ transform: "translateZ(-120px)" }}
+        />
+        <div
+          className="scene-layer absolute top-1/3 -right-40 w-[600px] h-[600px] rounded-full bg-accent/25 blur-[140px] will-change-transform"
+          style={{ transform: "translateZ(-80px)" }}
+        />
+        <div
+          className="scene-layer absolute bottom-0 left-1/3 w-[400px] h-[400px] rounded-full bg-primary-glow/20 blur-[100px] will-change-transform"
+          style={{ transform: "translateZ(-40px)" }}
+        />
+
+        {/* Glassy floating panes for premium 3D feel */}
+        <div
+          className="scene-layer absolute top-[18%] right-[12%] w-56 h-56 md:w-72 md:h-72 rounded-3xl glass border border-foreground/10 will-change-transform"
+          style={{ transform: "translateZ(40px) rotate(8deg)" }}
+        />
+        <div
+          className="scene-layer absolute bottom-[14%] left-[8%] w-40 h-40 md:w-56 md:h-56 rounded-3xl glass-strong border border-foreground/10 will-change-transform"
+          style={{ transform: "translateZ(80px) rotate(-10deg)" }}
+        />
+
+        {/* Soft conic highlight (front-most ambient) */}
+        <div
+          className="scene-layer absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[60%] opacity-30 blur-3xl will-change-transform"
+          style={{
+            background:
+              "conic-gradient(from 120deg at 50% 50%, hsl(var(--primary) / 0.25), transparent 30%, hsl(var(--accent) / 0.25), transparent 70%)",
+            transform: "translateZ(120px)",
+          }}
+        />
+
+        {/* Vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,hsl(var(--background))_100%)]" />
+      </div>
 
       <div className="container relative">
         <div className="max-w-4xl mx-auto text-center">
