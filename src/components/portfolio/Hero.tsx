@@ -34,6 +34,69 @@ const Hero = () => {
       const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
       tl.to(inners, { yPercent: 0, opacity: 1, duration: 1.4, stagger: 0.05 }, 0.3)
         .to(meta, { y: 0, opacity: 1, duration: 1, stagger: 0.1 }, 0.9);
+
+      // Right-side decorative cluster reveal
+      gsap.from(".hero-orbit", {
+        scale: 0.6,
+        opacity: 0,
+        rotate: -30,
+        duration: 1.6,
+        ease: "expo.out",
+        delay: 1.1,
+      });
+      gsap.from(".hero-float", {
+        y: 30,
+        opacity: 0,
+        duration: 1.2,
+        ease: "expo.out",
+        delay: 1.4,
+      });
+      gsap.from(".hero-scroll", {
+        opacity: 0,
+        x: -20,
+        duration: 1.2,
+        ease: "expo.out",
+        delay: 1.5,
+      });
+
+      // Continuous spin on the text ring
+      gsap.to(".hero-spin", {
+        rotation: 360,
+        transformOrigin: "50% 50%",
+        duration: 24,
+        ease: "none",
+        repeat: -1,
+      });
+
+      // Orbiting accent dot
+      gsap.to(".hero-orbit-dot", {
+        rotation: 360,
+        transformOrigin: "50% 50%",
+        duration: 8,
+        ease: "none",
+        repeat: -1,
+      });
+
+      // Floating motion on the status card
+      gsap.to(".hero-float", {
+        y: -10,
+        duration: 3,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+
+      // Scroll line travel
+      gsap.fromTo(
+        ".hero-scroll-line",
+        { yPercent: -100 },
+        {
+          yPercent: 200,
+          duration: 2,
+          ease: "power2.inOut",
+          repeat: -1,
+        }
+      );
     },
     { scope: heroRef }
   );
@@ -50,6 +113,64 @@ const Hero = () => {
         <span className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--accent))] animate-pulse" />
           Available for freelance & internship
+        </span>
+      </div>
+
+      {/* Right-side animated decorative cluster (desktop only) */}
+      <div className="hidden lg:block pointer-events-none absolute right-8 xl:right-12 top-1/2 -translate-y-1/2 z-10">
+        {/* Rotating circular badge */}
+        <div className="hero-orbit relative w-[180px] h-[180px] xl:w-[220px] xl:h-[220px]">
+          {/* Spinning text ring */}
+          <svg
+            viewBox="0 0 200 200"
+            className="hero-spin absolute inset-0 w-full h-full"
+            aria-hidden="true"
+          >
+            <defs>
+              <path
+                id="hero-circle"
+                d="M 100, 100 m -78, 0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0"
+              />
+            </defs>
+            <text className="mono fill-foreground/70" style={{ fontSize: "11px", letterSpacing: "0.32em" }}>
+              <textPath href="#hero-circle">
+                CREATIVE DEVELOPER · PORTFOLIO 2026 · CREATIVE DEVELOPER ·{" "}
+              </textPath>
+            </text>
+          </svg>
+
+          {/* Inner ring */}
+          <div className="absolute inset-[22%] rounded-full border border-foreground/15" />
+
+          {/* Center dot */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-foreground" />
+
+          {/* Orbiting accent dot */}
+          <div className="hero-orbit-dot absolute inset-0">
+            <span className="absolute left-1/2 top-0 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[hsl(var(--accent))] shadow-[0_0_12px_hsl(var(--accent)/0.6)]" />
+          </div>
+        </div>
+
+        {/* Floating status card */}
+        <div className="hero-float mt-6 w-[180px] xl:w-[220px] border border-foreground/15 bg-background/60 backdrop-blur-sm rounded-md p-3">
+          <div className="flex items-center justify-between mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            <span>Status</span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--accent))] animate-pulse" />
+              Live
+            </span>
+          </div>
+          <p className="mt-2 text-sm leading-snug">
+            Currently <em className="italic">crafting</em> interfaces in India.
+          </p>
+        </div>
+      </div>
+
+      {/* Vertical scroll indicator */}
+      <div className="hero-scroll hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 z-10 flex-col items-center gap-3 mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+        <span className="[writing-mode:vertical-rl] rotate-180">Scroll to explore</span>
+        <span className="relative w-px h-16 bg-foreground/20 overflow-hidden">
+          <span className="hero-scroll-line absolute inset-x-0 top-0 h-1/2 bg-foreground" />
         </span>
       </div>
 
