@@ -5,8 +5,8 @@ const Footer = () => {
     <footer className="relative bg-foreground text-background pt-16 pb-6 overflow-hidden">
       <Marquee slow>
         {Array.from({ length: 8 }).map((_, i) => (
-          <span key={i} className="display italic md:text-[14vw] leading-[0.9] text-7xl font-serif font-thin">
-            Let's build — <span className="not-italic text-7xl">Tanisha Verma</span> ✦
+          <span key={i} className="display italic text-[18vw] md:text-[14vw] leading-[0.9]">
+            Let's build — <span className="not-italic">Tanisha Verma</span> ✦
           </span>
         ))}
       </Marquee>
