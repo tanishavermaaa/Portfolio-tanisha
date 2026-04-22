@@ -9,7 +9,7 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="relative py-32 md:py-48 overflow-hidden">
+    <section id="skills" className="relative py-20 md:py-28 overflow-hidden">
       <div className="px-6 md:px-10 max-w-[1500px] mx-auto">
         <div className="grid md:grid-cols-12 gap-8 mb-16">
           <p className="eyebrow md:col-span-2">(Toolkit)</p>

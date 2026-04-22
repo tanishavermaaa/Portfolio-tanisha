@@ -29,7 +29,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative py-32 md:py-48 px-6 md:px-10 overflow-hidden">
+    <section id="contact" className="relative py-20 md:py-28 px-6 md:px-10 overflow-hidden">
       <div className="max-w-[1500px] mx-auto">
         <div className="grid md:grid-cols-12 gap-8 mb-16">
           <p className="eyebrow md:col-span-2">(Contact)</p>
