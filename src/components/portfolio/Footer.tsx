@@ -1,43 +1,20 @@
-import { Github, Linkedin, MessageCircle } from "lucide-react";
+import Marquee from "./Marquee";
 
 const Footer = () => {
   return (
-    <footer className="relative pt-10 pb-10 border-t border-foreground/5">
-      <div className="container">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-center md:text-left">
-            <p className="font-display text-lg">
-              <span className="text-gradient">Tanisha</span>
-              <span className="text-foreground/80"> Verma</span>
-            </p>
-            <p className="text-sm text-muted-foreground mt-1">
-              Designed and built with creativity, code, and curiosity.
-            </p>
-          </div>
+    <footer className="relative bg-foreground text-background pt-16 pb-6 overflow-hidden">
+      <Marquee slow>
+        {Array.from({ length: 8 }).map((_, i) => (
+          <span key={i} className="display italic text-[18vw] md:text-[14vw] leading-[0.9]">
+            Let's build — <span className="not-italic">Tanisha Verma</span> ✦
+          </span>
+        ))}
+      </Marquee>
 
-          <div className="flex items-center gap-2">
-            {[
-              { icon: Github, href: "https://github.com/tanishavermaaa", label: "GitHub" },
-              { icon: Linkedin, href: "https://www.linkedin.com/in/tanisha-verma-98657025a/", label: "LinkedIn" },
-              { icon: MessageCircle, href: "https://mail.google.com/mail/?view=cm&fs=1&to=tanishavermaa4@gmail.com&su=Lets%20work%20together", label: "Email" },
-            ].map(({ icon: Icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="relative z-10 cursor-pointer w-10 h-10 rounded-full glass flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all duration-500 ease-smooth hover:-translate-y-0.5"
-              >
-                <Icon size={16} />
-              </a>
-            ))}
-          </div>
-
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Tanisha Verma
-          </p>
-        </div>
+      <div className="px-6 md:px-10 max-w-[1500px] mx-auto mt-16 grid md:grid-cols-3 gap-6 mono text-[11px] uppercase tracking-[0.2em] text-background/60">
+        <p>© {new Date().getFullYear()} — Tanisha Verma</p>
+        <p className="md:text-center">Designed & built with care</p>
+        <p className="md:text-right">India · IST</p>
       </div>
     </footer>
   );

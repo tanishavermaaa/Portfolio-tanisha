@@ -1,97 +1,75 @@
-import { motion } from "framer-motion";
-import { ExternalLink, Briefcase } from "lucide-react";
-import SectionHeading from "./SectionHeading";
+import { ExternalLink } from "lucide-react";
+import SplitReveal from "./SplitReveal";
 
 const experiences = [
   {
-    title: "Infosys Internship",
+    n: "01",
+    year: "2024",
     role: "Intern",
+    title: "Infosys",
     description:
-      "Gained real-world industry exposure by working in a professional environment, learning development workflows, strengthening technical understanding, and adapting to the discipline of software delivery in a large-scale organization.",
-    extended:
-      "This experience helped me understand how software development works beyond classroom projects - practical learning, structured problem-solving, teamwork, and writing clean, reliable, maintainable code in a professional setting.",
-    highlights: [
-      "Real-world development exposure",
-      "Professional workflow understanding",
-      "Technical learning and growth",
-      "Structured software practices",
-    ],
+      "Real-world industry exposure — development workflows, professional discipline, and writing reliable, maintainable code at scale.",
   },
   {
-    title: "Freelancer — Snarip Studio",
-    role: "Web Developer",
+    n: "02",
+    year: "2024 — Now",
+    role: "Freelance Web Developer",
+    title: "Snarip Studio",
     link: "https://snaripstudio.com",
-    linkLabel: "snaripstudio.com",
     description:
-      "Worked on freelance web projects focused on building responsive, customized, and visually appealing digital solutions for clients.",
-    extended:
-      "Through freelancing, I learned to handle projects from idea to execution, understanding requirements, creating tailored designs, building functional websites and delivering solutions that balance usability with visual appeal.",
-    highlights: [
-      "Responsive website development",
-      "Custom client-focused solutions",
-      "Real-world problem solving",
-      "Design and development collaboration",
-      "End-to-end project experience",
-    ],
+      "Building responsive, custom websites for clients — from idea to launch, balancing usability with visual polish.",
   },
 ];
 
 const Experience = () => {
   return (
-    <section id="experience" className="relative py-28 md:py-40">
-      <div className="container">
-        <SectionHeading
-          eyebrow="Journey"
-          title=""
-          highlight="Experience"
-          intro="Experiences that helped me grow not only as a developer, but also as a problem solver, collaborator, and builder."
-        />
+    <section id="experience" className="relative py-32 md:py-48 px-6 md:px-10">
+      <div className="max-w-[1500px] mx-auto">
+        <div className="grid md:grid-cols-12 gap-8 mb-16">
+          <p className="eyebrow md:col-span-2">(Notes)</p>
+          <p className="md:col-span-3 mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            04 / Journey
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
-          {experiences.map((e, i) => (
-            <motion.div
-              key={e.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative"
+        <SplitReveal as="h2" className="display text-5xl md:text-7xl lg:text-8xl mb-24 max-w-5xl text-balance">
+          A few chapters that <em className="italic">shaped</em> the work.
+        </SplitReveal>
+
+        <div className="border-t border-foreground/10">
+          {experiences.map((e) => (
+            <div
+              key={e.n}
+              className="group grid md:grid-cols-12 gap-6 py-10 md:py-14 border-b border-foreground/10 transition-colors"
             >
-              <div className="glass-strong rounded-3xl p-7 md:p-9 h-full transition-all duration-500 ease-smooth hover:-translate-y-1 hover:shadow-elegant hover:border-primary/30">
-                <div className="flex items-start justify-between mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-glass flex items-center justify-center">
-                    <Briefcase size={20} className="text-primary-glow" />
-                  </div>
-                  <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{e.role}</span>
-                </div>
-
-                <h3 className="font-display text-2xl md:text-3xl font-semibold mb-2">{e.title}</h3>
+              <div className="md:col-span-1 mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground pt-2">
+                {e.n}
+              </div>
+              <div className="md:col-span-2 mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground pt-2">
+                {e.year}
+              </div>
+              <div className="md:col-span-4">
+                <h3 className="display text-4xl md:text-5xl lg:text-6xl leading-none">
+                  {e.title}
+                </h3>
+                <p className="mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground mt-3">
+                  {e.role}
+                </p>
                 {e.link && (
                   <a
                     href={e.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm text-primary-glow hover:text-primary mb-5 transition-colors"
+                    className="inline-flex items-center gap-1.5 mt-3 text-sm underline underline-offset-4 decoration-1"
                   >
-                    {e.linkLabel} <ExternalLink size={12} />
+                    snaripstudio.com <ExternalLink size={12} />
                   </a>
                 )}
-
-                <p className="text-muted-foreground leading-relaxed mb-4 mt-4">{e.description}</p>
-                <p className="text-sm text-muted-foreground/80 leading-relaxed mb-6">{e.extended}</p>
-
-                <div className="h-px w-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent mb-6" />
-
-                <ul className="space-y-2">
-                  {e.highlights.map((h) => (
-                    <li key={h} className="flex items-start gap-3 text-sm text-foreground/80">
-                      <span className="mt-1.5 w-1 h-1 rounded-full bg-gradient-primary shrink-0" />
-                      {h}
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </motion.div>
+              <div className="md:col-span-5 text-base md:text-lg text-foreground/80 leading-relaxed">
+                {e.description}
+              </div>
+            </div>
           ))}
         </div>
       </div>

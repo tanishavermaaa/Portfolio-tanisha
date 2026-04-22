@@ -1,53 +1,56 @@
-import { motion } from "framer-motion";
-import SectionHeading from "./SectionHeading";
+import Marquee from "./Marquee";
+import SplitReveal from "./SplitReveal";
 
 const skills = [
-  { name: "Java", icon: "☕" },
-  { name: "JavaScript", icon: "JS" },
-  { name: "React", icon: "⚛" },
-  { name: "Node.js", icon: "⬢" },
-  { name: "Express", icon: "Ex" },
-  { name: "MongoDB", icon: "🍃" },
-  { name: "REST APIs", icon: "↔" },
-  { name: "Git", icon: "⎇" },
-  { name: "GitHub", icon: "G" },
-  { name: "Postman", icon: "✉" },
-  { name: "HTML", icon: "</>" },
-  { name: "CSS", icon: "#" },
+  "React", "Node.js", "Express", "MongoDB", "JavaScript", "TypeScript",
+  "REST APIs", "Tailwind", "GSAP", "Framer Motion", "Git", "GitHub",
+  "Postman", "Figma", "HTML", "CSS", "Java",
 ];
 
 const Skills = () => {
   return (
-    <section id="skills" className="relative py-28 md:py-40 overflow-hidden">
-      <div className="absolute right-0 top-0 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[140px] -z-10" />
+    <section id="skills" className="relative py-32 md:py-48 overflow-hidden">
+      <div className="px-6 md:px-10 max-w-[1500px] mx-auto">
+        <div className="grid md:grid-cols-12 gap-8 mb-16">
+          <p className="eyebrow md:col-span-2">(Toolkit)</p>
+          <p className="md:col-span-3 mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            03 / Stack
+          </p>
+        </div>
 
-      <div className="container">
-        <SectionHeading
-          eyebrow="Toolkit"
-          title="Skills &"
-          highlight="Tools"
-          intro="A combination of development technologies and tools I use to build modern, responsive, and scalable digital products."
-        />
+        <SplitReveal as="h2" className="display text-5xl md:text-7xl lg:text-8xl text-balance max-w-5xl">
+          A small set of tools, used <em className="italic">deliberately</em>.
+        </SplitReveal>
+      </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-5">
+      {/* Marquee bands */}
+      <div className="mt-24 space-y-2 border-y border-foreground/10 py-10">
+        <Marquee>
           {skills.map((s, i) => (
-            <motion.div
-              key={s.name}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: (i % 6) * 0.06, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative"
-            >
-              <div className="glass rounded-2xl p-5 md:p-6 flex flex-col items-center justify-center gap-3 aspect-square transition-all duration-500 ease-smooth hover:-translate-y-1 hover:shadow-glow-primary hover:border-primary/30">
-                <div className="w-12 h-12 rounded-xl bg-gradient-glass flex items-center justify-center font-display text-xl text-foreground/90 group-hover:text-gradient transition-all duration-500">
-                  {s.icon}
-                </div>
-                <p className="text-sm text-foreground/80 group-hover:text-foreground transition-colors">
-                  {s.name}
-                </p>
-              </div>
-            </motion.div>
+            <span key={`a-${i}`} className="display text-6xl md:text-8xl leading-none">
+              {s} <span className="text-[hsl(var(--accent))]">✦</span>
+            </span>
+          ))}
+        </Marquee>
+        <Marquee reverse slow>
+          {skills.map((s, i) => (
+            <span key={`b-${i}`} className="display italic text-5xl md:text-7xl leading-none text-foreground/40">
+              {s} <span className="opacity-60">/</span>
+            </span>
+          ))}
+        </Marquee>
+      </div>
+
+      {/* Grid list */}
+      <div className="px-6 md:px-10 max-w-[1500px] mx-auto mt-24">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-foreground/10 border border-foreground/10">
+          {skills.slice(0, 12).map((s, i) => (
+            <div key={s} className="bg-background p-5 flex items-baseline justify-between">
+              <span className="text-base md:text-lg">{s}</span>
+              <span className="mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+            </div>
           ))}
         </div>
       </div>
