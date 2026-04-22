@@ -60,7 +60,7 @@ const Experience = () => {
                     href={e.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 mt-3 text-sm underline underline-offset-4 decoration-1"
+                    className="inline-flex items-center gap-1.5 mt-3 text-sm underline underline-offset-4 decoration-1 font-sans"
                   >
                     snaripstudio.com <ExternalLink size={12} />
                   </a>

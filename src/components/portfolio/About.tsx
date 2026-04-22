@@ -19,10 +19,10 @@ const About = () => {
             </SplitReveal>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-3xl text-base md:text-lg leading-relaxed text-foreground/80">
-              <p>
+              <p className="text-justify">
                 I have always been drawn to both creativity and technology. One side enjoys designing things that look beautiful and feel intuitive. The other loves building systems that work smoothly behind the scenes.
               </p>
-              <p>
+              <p className="text-justify">
                 As a final-year B.Tech IT student, I turn ideas into real products - designing interfaces, building backend logic, and connecting it into a complete experience. I gravitate to projects that solve practical problems.
               </p>
             </div>

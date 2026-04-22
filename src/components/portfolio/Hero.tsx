@@ -46,7 +46,7 @@ const Hero = () => {
     >
       {/* Top meta row */}
       <div className="hero-meta flex items-center justify-between mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-        <span>Portfolio · 2026 ©</span>
+        <span>​</span>
         <span className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--accent))] animate-pulse" />
           Available for freelance & internship
