@@ -3,9 +3,9 @@ import SplitReveal from "./SplitReveal";
 
 const About = () => {
   return (
-    <section id="about" className="relative py-32 md:py-48 px-6 md:px-10">
+    <section id="about" className="relative py-20 md:py-28 px-6 md:px-10">
       <div className="max-w-[1500px] mx-auto">
-        <div className="grid md:grid-cols-12 gap-8 mb-24">
+        <div className="grid md:grid-cols-12 gap-8 mb-12">
           <p className="eyebrow md:col-span-2">(About)</p>
           <p className="md:col-span-3 mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
             01 / Profile
@@ -45,7 +45,7 @@ const About = () => {
         </div>
 
         {/* Stats */}
-        <div className="mt-32 grid grid-cols-2 md:grid-cols-4 gap-px bg-foreground/10 border-y border-foreground/10">
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-px bg-foreground/10 border-y border-foreground/10">
           {[
             { k: "03+", v: "Featured Projects" },
             { k: "MERN", v: "Stack Focus" },

@@ -50,25 +50,31 @@ const Projects = () => {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 768px)", () => {
-        const getScrollAmount = () => track.scrollWidth - window.innerWidth;
+        const getScrollAmount = () => Math.max(0, track.scrollWidth - window.innerWidth);
 
         const tween = gsap.to(track, {
           x: () => -getScrollAmount(),
           ease: "none",
         });
 
-        ScrollTrigger.create({
+        const st = ScrollTrigger.create({
           trigger: section,
           start: "top top",
           end: () => `+=${getScrollAmount()}`,
           pin: true,
+          anticipatePin: 1,
           scrub: 1,
           animation: tween,
           invalidateOnRefresh: true,
         });
 
-        return () => tween.kill();
+        return () => {
+          st.kill();
+          tween.kill();
+        };
       });
+
+      return () => mm.revert();
     },
     { scope: sectionRef }
   );
@@ -76,9 +82,9 @@ const Projects = () => {
   return (
     <section ref={sectionRef} id="projects" className="relative bg-foreground text-background">
       {/* Header band */}
-      <div className="px-6 md:px-10 pt-32 pb-16">
+      <div className="px-6 md:px-10 pt-20 pb-8">
         <div className="max-w-[1500px] mx-auto">
-          <div className="grid md:grid-cols-12 gap-8 mb-12">
+          <div className="grid md:grid-cols-12 gap-8 mb-8">
             <p className="eyebrow md:col-span-2 text-background/60">​Projects</p>
             <p className="md:col-span-3 mono text-[11px] uppercase tracking-[0.18em] text-background/60">
               ​
@@ -92,7 +98,7 @@ const Projects = () => {
 
       {/* Horizontal pinned track */}
       <div className="overflow-hidden">
-        <div ref={trackRef} className="flex gap-8 md:gap-16 pl-6 md:pl-10 pr-[20vw] py-16 will-change-transform">
+        <div ref={trackRef} className="flex gap-8 md:gap-16 pl-6 md:pl-10 pr-[20vw] py-8 will-change-transform">
           {projects.map((p) => (
             <a
               key={p.n}

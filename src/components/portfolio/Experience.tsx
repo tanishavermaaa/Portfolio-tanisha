@@ -23,16 +23,16 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="relative py-32 md:py-48 px-6 md:px-10">
+    <section id="experience" className="relative py-20 md:py-28 px-6 md:px-10">
       <div className="max-w-[1500px] mx-auto">
-        <div className="grid md:grid-cols-12 gap-8 mb-16">
+        <div className="grid md:grid-cols-12 gap-8 mb-10">
           <p className="eyebrow md:col-span-2">(Notes)</p>
           <p className="md:col-span-3 mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
             04 / Journey
           </p>
         </div>
 
-        <SplitReveal as="h2" className="display text-5xl md:text-7xl lg:text-8xl mb-24 max-w-5xl text-balance">
+        <SplitReveal as="h2" className="display text-5xl md:text-7xl lg:text-8xl mb-16 max-w-5xl text-balance">
           A few chapters that <em className="italic">shaped</em> the work.
         </SplitReveal>
 
