@@ -34,6 +34,69 @@ const Hero = () => {
       const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
       tl.to(inners, { yPercent: 0, opacity: 1, duration: 1.4, stagger: 0.05 }, 0.3)
         .to(meta, { y: 0, opacity: 1, duration: 1, stagger: 0.1 }, 0.9);
+
+      // Right-side decorative cluster reveal
+      gsap.from(".hero-orbit", {
+        scale: 0.6,
+        opacity: 0,
+        rotate: -30,
+        duration: 1.6,
+        ease: "expo.out",
+        delay: 1.1,
+      });
+      gsap.from(".hero-float", {
+        y: 30,
+        opacity: 0,
+        duration: 1.2,
+        ease: "expo.out",
+        delay: 1.4,
+      });
+      gsap.from(".hero-scroll", {
+        opacity: 0,
+        x: -20,
+        duration: 1.2,
+        ease: "expo.out",
+        delay: 1.5,
+      });
+
+      // Continuous spin on the text ring
+      gsap.to(".hero-spin", {
+        rotation: 360,
+        transformOrigin: "50% 50%",
+        duration: 24,
+        ease: "none",
+        repeat: -1,
+      });
+
+      // Orbiting accent dot
+      gsap.to(".hero-orbit-dot", {
+        rotation: 360,
+        transformOrigin: "50% 50%",
+        duration: 8,
+        ease: "none",
+        repeat: -1,
+      });
+
+      // Floating motion on the status card
+      gsap.to(".hero-float", {
+        y: -10,
+        duration: 3,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+
+      // Scroll line travel
+      gsap.fromTo(
+        ".hero-scroll-line",
+        { yPercent: -100 },
+        {
+          yPercent: 200,
+          duration: 2,
+          ease: "power2.inOut",
+          repeat: -1,
+        }
+      );
     },
     { scope: heroRef }
   );
