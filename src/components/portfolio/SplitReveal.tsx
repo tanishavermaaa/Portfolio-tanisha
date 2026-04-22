@@ -82,11 +82,11 @@ const SplitReveal = ({
     { scope: ref }
   );
 
+  const Component = Tag as ElementType;
   return (
-    // @ts-expect-error dynamic tag
-    <Tag ref={ref} className={className}>
+    <Component ref={ref} className={className}>
       {children}
-    </Tag>
+    </Component>
   );
 };
 
