@@ -13,6 +13,19 @@ const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
       smoothWheel: true,
     });
 
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest("a");
+      if (anchor && anchor.hash && anchor.origin === window.location.origin) {
+        e.preventDefault();
+        const element = document.querySelector(anchor.hash);
+        if (element) {
+          lenis.scrollTo(element);
+        }
+      }
+    };
+
+    document.addEventListener("click", handleAnchorClick);
     lenis.on("scroll", ScrollTrigger.update);
 
     const raf = (time: number) => {
@@ -22,6 +35,7 @@ const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      document.removeEventListener("click", handleAnchorClick);
       gsap.ticker.remove(raf);
       lenis.destroy();
     };

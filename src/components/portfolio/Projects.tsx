@@ -8,12 +8,22 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import tracker from "@/assets/project-tracker.jpg";
 import quiz from "@/assets/project-quiz.jpg";
 import restaurant from "@/assets/project-restaurant.jpg";
+import inventory from "@/assets/project-inventory.png";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const projects = [
   {
     n: "01",
+    title: "Inventory Management System",
+    tag: "Full-Stack · MERN",
+    year: "2025",
+    image: inventory,
+    repo: "https://github.com/tanishavermaaa/Inventory-Management-System.git",
+    demo: "https://inventorymngt.netlify.app/",
+  },
+  {
+    n: "02",
     title: "Job Application Tracker",
     tag: "Full-Stack · MERN",
     year: "2025",
@@ -21,15 +31,16 @@ const projects = [
     repo: "https://github.com/tanishavermaaa/Job-Application-Tracker",
   },
   {
-    n: "02",
+    n: "03",
     title: "Quiz Game",
     tag: "Frontend · Interactive",
     year: "2025",
     image: quiz,
     repo: "https://github.com/tanishavermaaa/Quiz-game",
+    demo: "https://quezz-game.netlify.app/",
   },
   {
-    n: "03",
+    n: "04",
     title: "Restaurant Backend",
     tag: "Backend · REST APIs",
     year: "2024",
@@ -91,14 +102,16 @@ const Projects = () => {
   );
 
   const projectCards = projects.map((p) => (
-    <a
+    <div
       key={p.n}
-      href={p.repo}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group relative shrink-0 w-full md:w-[55vw] lg:w-[42vw]"
+      className="group relative shrink-0 w-full md:w-[46vw] lg:w-[34vw]"
     >
-      <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-background/5">
+      <a
+        href={p.demo || p.repo}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block relative aspect-[16/10] overflow-hidden rounded-sm bg-background/5"
+      >
         <img
           src={p.image}
           alt={p.title}
@@ -111,27 +124,47 @@ const Projects = () => {
         <div className="absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-background text-foreground opacity-0 transition-opacity duration-500 group-hover:opacity-100">
           <ArrowUpRight size={16} />
         </div>
+      </a>
+      <div className="mt-4 flex items-baseline justify-between gap-4">
+        <h3 className="display text-2xl md:text-3xl lg:text-4xl">{p.title}</h3>
+        <span className="mono shrink-0 text-[10px] uppercase tracking-[0.2em] text-background/60">{p.year}</span>
       </div>
-      <div className="mt-6 flex items-baseline justify-between gap-6">
-        <h3 className="display text-3xl md:text-4xl lg:text-5xl">{p.title}</h3>
-        <span className="mono shrink-0 text-[11px] uppercase tracking-[0.2em] text-background/60">{p.year}</span>
+      <p className="mono mt-1 text-[10px] uppercase tracking-[0.2em] text-background/60">{p.tag}</p>
+      <div className="mt-3 flex gap-4 text-[10px] mono uppercase tracking-[0.2em]">
+        {p.demo && (
+          <a
+            href={p.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-background/60 hover:text-background hover:underline transition-colors flex items-center gap-1"
+          >
+            Live Demo <ArrowUpRight size={10} />
+          </a>
+        )}
+        <a
+          href={p.repo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-background/60 hover:text-background hover:underline transition-colors flex items-center gap-1"
+        >
+          Source Code <ArrowUpRight size={10} />
+        </a>
       </div>
-      <p className="mono mt-2 text-[11px] uppercase tracking-[0.2em] text-background/60">{p.tag}</p>
-    </a>
+    </div>
   ));
 
   return (
-    <section ref={sectionRef} id="projects" className="relative bg-foreground text-background">
+    <section ref={sectionRef} id="projects" className="relative bg-foreground text-background min-h-screen md:min-h-0 md:h-screen md:flex md:flex-col md:justify-center overflow-hidden py-12 md:py-0">
       {/* Header band */}
-      <div className="px-6 md:px-10 pt-20 pb-8">
+      <div className="px-6 md:px-10 pb-6">
         <div className="max-w-[1500px] mx-auto">
-          <div className="grid md:grid-cols-12 gap-8 mb-8">
-            <p className="eyebrow md:col-span-2 text-background/60">​Projects</p>
+          <div className="grid md:grid-cols-12 gap-4 mb-2">
+            <p className="eyebrow md:col-span-2 text-background/60">Projects</p>
             <p className="md:col-span-3 mono text-[11px] uppercase tracking-[0.18em] text-background/60">
-              ​
+              02 / Work
             </p>
           </div>
-          <SplitReveal as="h2" className="display text-6xl md:text-8xl lg:text-9xl text-balance">
+          <SplitReveal as="h2" className="display text-5xl md:text-7xl lg:text-8xl text-balance">
             Things I've <em className="italic opacity-70">built</em> recently.
           </SplitReveal>
         </div>
@@ -152,9 +185,9 @@ const Projects = () => {
             </div>
           </div>
         ) : (
-          <div ref={trackRef} className="flex gap-16 pl-10 pr-[20vw] py-8 will-change-transform">
+          <div ref={trackRef} className="flex gap-12 pl-10 pr-[20vw] py-4 will-change-transform">
             {projectCards}
-            <div className="flex w-[35vw] shrink-0 items-center">
+            <div className="flex w-[30vw] shrink-0 items-center">
               <div>
                 <p className="eyebrow mb-4 text-background/60">— End of selection</p>
                 <p className="display text-4xl md:text-5xl text-balance">

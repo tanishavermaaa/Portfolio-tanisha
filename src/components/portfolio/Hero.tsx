@@ -187,7 +187,7 @@ const Hero = () => {
         <div className="hero-meta md:col-span-5">
           <p className="eyebrow mb-3">​</p>
           <p className="text-xl md:text-2xl leading-snug text-pretty">
-            Final-year IT student blending <em className="italic">logic</em> and <em className="italic">design</em> into living digital products.
+            B.Tech IT graduate blending <em className="italic">logic</em> and <em className="italic">design</em> into living digital products.
           </p>
         </div>
 

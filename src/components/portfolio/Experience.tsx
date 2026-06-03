@@ -19,6 +19,22 @@ const experiences = [
     description:
       "Building responsive, custom websites for clients - from idea to launch, balancing usability with visual polish.",
   },
+  {
+    n: "03",
+    year: "2022 — 2026",
+    role: "IT Student to Graduate",
+    title: "B.Tech Graduation",
+    description:
+      "Graduated with a solid grounding in software engineering principles. Mastered core concepts in Data Structures & Algorithms, OOPs, and Database Management, translating theory into software systems.",
+  },
+  {
+    n: "04",
+    year: "2023 — Now",
+    role: "Competitive Programming",
+    title: "Algorithmic Development",
+    description:
+      "Honed analytical skills on LeetCode. Achieved a rating of 1496 (Top 10% globally) by solving complex problems, building a deep understanding of algorithm efficiency and system design.",
+  },
 ];
 
 const Experience = () => {

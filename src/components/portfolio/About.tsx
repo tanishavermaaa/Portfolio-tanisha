@@ -15,7 +15,7 @@ const About = () => {
         <div className="grid md:grid-cols-12 gap-12 items-start">
           <div className="md:col-span-7">
             <SplitReveal as="h2" className="display text-5xl md:text-7xl lg:text-8xl mb-12 text-balance">
-              I design and build digital things that feel <em className="italic">considered</em>, polished and useful.
+              I design and build digital things that feel <em className="italic">considered,</em>polished and useful.
             </SplitReveal>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-3xl text-base md:text-lg leading-relaxed text-foreground/80">
@@ -23,7 +23,7 @@ const About = () => {
                 I have always been drawn to both creativity and technology. One side enjoys designing things that look beautiful and feel intuitive. The other loves building systems that work smoothly behind the scenes.
               </p>
               <p className="text-justify">
-                As a final-year B.Tech IT student, I turn ideas into real products - designing interfaces, building backend logic, and connecting it into a complete experience. I gravitate to projects that solve practical problems.
+                As a B.Tech IT graduate, I turn ideas into real products - designing interfaces, building backend logic, and connecting them into a complete experience. I gravitate to projects that solve practical problems.
               </p>
             </div>
           </div>
