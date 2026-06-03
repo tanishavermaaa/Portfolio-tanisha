@@ -59,14 +59,16 @@ To launch the local development server:
 
 ```bash
 npm run dev
-The application will run on http://localhost:8080/.
 ```
+The application will run on http://localhost:8080/.
+
 
 Building for Production
 To build the production bundle:
 
 ```bash
 npm run build
-This compiles TypeScript, bundles files using Vite, and outputs optimized assets to the dist/ folder.
 ```
+This compiles TypeScript, bundles files using Vite, and outputs optimized assets to the dist/ folder.
+
 
