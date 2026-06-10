@@ -1,5 +1,5 @@
 
-# Tanisha Verma — Personal Portfolio
+# Tanisha Verma - Personal Portfolio
 
 A premium, minimal, editorial portfolio designed with a Swiss-style layout, featuring advanced horizontal scrolling, custom micro-animations, and full-stack project showcases.
 
